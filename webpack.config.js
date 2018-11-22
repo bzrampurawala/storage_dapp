@@ -1,9 +1,10 @@
+// const transform_decorators_legacy = require('babel-plugin-transform-decorators-legacy'); 
 const webpack = require('webpack');
-const path = require('path');
 module.exports = {
+  mode: 'development',
   entry: __dirname + "/view/src/js/index.js",
   output: {
-    path: __dirname + "/view/dist/",
+    path: __dirname + "/view/",
     filename: "bundle.js"
   },
   module: {
@@ -16,18 +17,19 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         use: {
-          exclude: /node_modules/,
           loader: "babel-loader",
           query: {
-            presets: ["react", "es2015"],
-            plugins: [
-              "react-html-attrs",
-              "transform-decorators-legacy",
-              "transform-class-properties"
-            ]
+            presets: [
+              '@babel/preset-env',
+              "@babel/preset-react", 
+              // "@babel/preset-es2015"
+            ],
           }
         }
       }
-    ]
-  }
+    ],
+  },
+  plugins: [
+    new webpack.ProgressPlugin(),
+  ]
 };
