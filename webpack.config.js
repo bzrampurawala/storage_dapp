@@ -1,10 +1,10 @@
-// const transform_decorators_legacy = require('babel-plugin-transform-decorators-legacy'); 
+// const transform_decorators_legacy = require('babel-plugin-transform-decorators-legacy');
 const webpack = require('webpack');
 module.exports = {
   mode: 'development',
   entry: __dirname + "/view/src/js/index.js",
   output: {
-    path: __dirname + "/view/",
+    path: __dirname + "/view/src/dist",
     filename: "bundle.js"
   },
   module: {

@@ -1,4 +1,4 @@
 /node_modules
 /package-lock.json
 /.env
-/view/bundle.js
+/view/src/dist/bundle.js
