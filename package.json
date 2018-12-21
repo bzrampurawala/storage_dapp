@@ -10,6 +10,7 @@
     "start": "npm install --silent && concurrently \"nodemon server.js\" \"webpack -w\"",
     "build": "webpack -w",
     "migration": "truffle migrate --network ropsten",
+    "console": "truffle console --network ropsten",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
