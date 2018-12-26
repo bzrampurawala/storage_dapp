@@ -13,11 +13,6 @@ contract Store{
     mapping(address=>file[]) users;
 
     function addFile( uint createdAt, bytes32 name, bytes32 hashId, bytes32 typeOfFile, uint size) public{
-        require(createdAt==0,"Timestamp missing");
-        require(name=="","File name missing");
-        require(hashId=="","Hash of file missing");
-        require(typeOfFile=="","File type missing");
-        require(size == 0,"length of file missing");
         users[msg.sender].push(file({
             updatedAt: 0,
             deletedAt: 0,
@@ -40,7 +35,7 @@ contract Store{
     // function shareFile(address to) public{
         
     // }
-    function getFile(uint index) public view returns( uint , uint, uint , bytes32 , bytes32 , bytes32 , uint ){
+    function getFile(uint index) public view returns( uint , uint, uint , bytes32 , bytes32  , bytes32  , uint ){
         require(users[msg.sender].length>0,"there are no files associated with this address");
         uint createdAt = users[msg.sender][index].createdAt;
         uint updatedAt = users[msg.sender][index].updatedAt;
