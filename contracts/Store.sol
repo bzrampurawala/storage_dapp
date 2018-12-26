@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.00;
 
 contract Store{
     struct file{
@@ -41,6 +41,7 @@ contract Store{
         
     // }
     function getFile(uint index) public view returns( uint , uint, uint , bytes32 , bytes32 , bytes32 , uint ){
+        require(users[msg.sender].length>0,"there are no files associated with this address");
         uint createdAt = users[msg.sender][index].createdAt;
         uint updatedAt = users[msg.sender][index].updatedAt;
         uint deletedAt = users[msg.sender][index].deletedAt;
