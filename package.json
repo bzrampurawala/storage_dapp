@@ -9,8 +9,9 @@
   "scripts": {
     "start": "npm install --silent && concurrently \"nodemon server.js\" \"webpack -w\"",
     "build": "webpack -w",
-    "migration": "truffle migrate --network ropsten",
-    "console": "truffle console --network ropsten",
+    "migrate": "truffle migrate --network localhost --reset",
+    "deploy": "truffle deploy --network localhost",
+    "console": "truffle console --network localhost",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -39,6 +40,7 @@
     "express": "^4.16.4",
     "helmet": "^3.15.0",
     "morgan": "^1.9.1",
+    "truffle": "^5.0.0",
     "truffle-hdwallet-provider": "0.0.6"
   }
 }
