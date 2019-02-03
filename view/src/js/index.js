@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import file from './core/storeFiles';
-import buffer from 'buffer';
+import fileObject from './utils/storeFiles';
 const app = document.getElementById('main');
 class Main extends React.Component{
     handleOnClick(e){
@@ -9,7 +8,7 @@ class Main extends React.Component{
         e.stopPropagation()
 
         const files = e.currentTarget.files;
-        file.upload(files[0]);
+        fileObject.upload(files[0]);
     }
     render(){
         return(
