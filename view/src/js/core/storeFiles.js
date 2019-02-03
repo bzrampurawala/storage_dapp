@@ -1,12 +1,17 @@
 const ipfsClient = require('ipfs-http-client');
-const ipfs = ipfsClient();
+const ipfs = ipfsClient('localhost', '5001', { protocol: 'http' });
 const file = {};
 file.upload = file=>{
-    console.log(file)
-    ipfs.add(file,(err, res)=>{
-        console.log(err)
-        console.log(res);
-    })
+    const finalFileObject = {};
+    console.log(file);
+    const reader = new FileReader();
+        reader.onloadend = function(){
+            const buf = buffer.Buffer(reader.result);
+            ipfs.add(buf,(err, res)=>{
+                console.log(res);
+            })
+        }
+    // reader.readAsArrayBuffer(files[0]);
 }
 
 module.exports = file;
