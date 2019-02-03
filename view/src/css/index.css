@@ -1,0 +1,41 @@
+#main{
+    position: fixed;
+    background-image: url('../assests/images/background.jpg');
+    opacity: 0.8;
+    margin: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+.addButton{
+    cursor: pointer;
+    padding: 25px 80px;
+    display: inline-block;
+    margin: 15px 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    border: 3px solid #fff;
+    color: #fff;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.addButton:hover,
+.addButton:active {
+	color: #0e83cd;
+	background: #fff;
+}
+.fileInput{
+    display: none;
+}
