@@ -2,3 +2,4 @@
 /ppackage-lock.json
 /.env
 /view/src/dist/bundle.js
+/view/config.js

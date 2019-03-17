@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AddButton from './ui/addButton';
+import "@babel/polyfill"
 import FileHolder from './ui/fileHolder';
 const app = document.getElementById('main');
 class Main extends React.Component{
