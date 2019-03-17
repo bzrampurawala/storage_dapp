@@ -22,7 +22,10 @@ fileObject.upload = file=>{
             const size =  padd("bytes",fromAscii(file.size)).substr(0,66);
             const hash =  padd("bytes",fromAscii(res[0].hash)).substr(0,66);
             const accounts = window.web3.eth.accounts;
-            console.log(accounts)
+            if(accounts==null){
+                alert("download metamask");
+                return;
+            }
             const x = eth.contract.methods.addFile(name, hash, type, size).send({from: accounts[0]},(error, result)=>{
                 if(error) console.log(error)
                 else console.log(result)
