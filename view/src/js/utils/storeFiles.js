@@ -3,6 +3,7 @@ import buffer from 'buffer';
 import eth from '../core/web3';
 import ipfs from '../core/ipfs';
 import transactionOptions from '../core/transactionOptions';
+import { ethers } from 'ethers';
 
 const fileObject = {};
 fileObject.upload = file=>{
@@ -14,17 +15,23 @@ fileObject.upload = file=>{
     reader.onloadend = function(){
         const buf = buffer.Buffer(reader.result);
         ipfs.add(buf,async (err, res)=>{
-            const fromAscii = eth.web3.utils.fromAscii;
-            const padd = eth.web3.eth.abi.encodeParameter.bind(eth.web3.eth.abi);
-            const name = padd("bytes",fromAscii(file.name)).substr(0,66);
-            const type =  padd("bytes",fromAscii(file.type)).substr(0,66);
-            const size =  padd("bytes",fromAscii(file.size)).substr(0,66);
-            const hash =  padd("bytes",fromAscii(res[0].hash)).substr(0,66);
+            
+            const hash = res[0].hash;
+            const hashSize = hash.length;
+            const middleOfHash = Math.floor(hashSize/2);
+            const hash1 = hash.substr(0, middleOfHash);
+            const hash2 = hash.substr(middleOfHash+1);
+            const converToByte32 = ethers.utils.formatBytes32String;
+            const nameByte32 = converToByte32(file.name);
+            const typeByte32 =  converToByte32(file.type);
+            const sizeByte32 = converToByte32(file.size);
+            const hash1Byte32 =  converToByte32(hash1);
+            const hash2Byte32 = converToByte32(hash2);
             if(transactionOptions.from==null){
                 alert("download metamask");
                 return;
             }
-            eth.contract.methods.addFile(name, hash, type, size).send(transactionOptions)
+            eth.contract.methods.addFile(nameByte32, hash1Byte32, hash2Byte32, typeByte32, sizeByte32).send(transactionOptions)
             .on('transactionHash', (hash) => {
                 console.log(hash)
             })

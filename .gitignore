@@ -1,5 +1,5 @@
 /node_modules
-/ppackage-lock.json
+/package-lock.json
 /.env
 /view/src/dist/bundle.js
 /view/config.js

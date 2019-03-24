@@ -2,7 +2,7 @@
 let store = artifacts.require('./Store.sol');
 contract("Store", function(accounts){
     it("push file", function() {
-        return store.deployed().then(instance=>instance.addFile(web3.utils.toHex('burhanuddin'),web3.utils.toHex('burhanuddin'),web3.utils.toHex('burhanuddin rampurawala is great'),21345)).then(data=>{
+        return store.deployed().then(instance=>instance.addFile(web3.utils.toHex('burhanuddin'), web3.utils.toHex('burhanuddin'), web3.utils.toHex('burhanuddin'),web3.utils.toHex('burhanuddin rampurawala is great'),21345)).then(data=>{
             console.log(data)
         });
     });
