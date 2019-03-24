@@ -17,21 +17,22 @@ fileObject.upload = file=>{
         ipfs.add(buf,async (err, res)=>{
             
             const hash = res[0].hash;
+            console.log(hash)
             const hashSize = hash.length;
             const middleOfHash = Math.floor(hashSize/2);
             const hash1 = hash.substr(0, middleOfHash);
-            const hash2 = hash.substr(middleOfHash+1);
+            const hash2 = hash.substr(middleOfHash);
             const converToByte32 = ethers.utils.formatBytes32String;
             const nameByte32 = converToByte32(file.name);
             const typeByte32 =  converToByte32(file.type);
-            const sizeByte32 = converToByte32(file.size);
+            const size = file.size;
             const hash1Byte32 =  converToByte32(hash1);
             const hash2Byte32 = converToByte32(hash2);
             if(transactionOptions.from==null){
                 alert("download metamask");
                 return;
             }
-            eth.contract.methods.addFile(nameByte32, hash1Byte32, hash2Byte32, typeByte32, sizeByte32).send(transactionOptions)
+            eth.contract.methods.addFile(nameByte32, hash1Byte32, hash2Byte32, typeByte32, size).send(transactionOptions)
             .on('transactionHash', (hash) => {
                 console.log(hash)
             })
