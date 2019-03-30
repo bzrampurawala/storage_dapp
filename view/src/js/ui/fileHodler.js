@@ -1,10 +1,10 @@
 import React from 'react'
 
-class FileHolder extends React.Component{
+class FileHodler extends React.Component{
     render(){
         return(
             <img src = {this.props.imageSrc}/>
         )
     }
 }
-export default FileHolder
+export default FileHodler

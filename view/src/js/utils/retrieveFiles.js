@@ -25,6 +25,7 @@ retrieveFiles.get = async ()=>{
     }
     catch(err){
         console.log("error while fetching files ",err)
+        return null;
     }
     
 }

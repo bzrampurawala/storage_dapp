@@ -6,7 +6,6 @@ class AddButton extends React.Component{
     handleOnClick(e){
         e.preventDefault()
         e.stopPropagation()
-
         const files = e.currentTarget.files;
         fileObject.upload(files[0]);
     }
