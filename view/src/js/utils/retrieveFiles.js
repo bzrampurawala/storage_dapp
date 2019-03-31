@@ -1,32 +1,25 @@
 import eth from '../core/web3';
-import ipfs from '../core/ipfs';
-import { ethers } from 'ethers';
 import transactionOptions from '../core/transactionOptions';
-
-const retrieveFiles = {};
-retrieveFiles.get = async ()=>{
+import { fileStructure } from '../utils'
+import store from '../store'
+export const retrieveFiles = async ()=>{
     try{
-        const files = [];
         let numberOfFiles = await eth.contract.methods.numberOfFiles().call(transactionOptions);
         while(numberOfFiles>0){
             numberOfFiles = numberOfFiles-1;
-            console.log(numberOfFiles);
             const file = await eth.contract.methods.getFile(numberOfFiles).call(transactionOptions);
             const hexToString = eth.web3.utils.hexToString
-            files.push({
-                name: hexToString(file['0']),
-                hash: hexToString(file['1']) + hexToString(file['2']),
-                type: hexToString(file['3']),
-                size: file['4']
-            })
+            const finalFile = fileStructure(
+                hexToString(file['0']),
+                hexToString(file['1']) + hexToString(file['2']),
+                hexToString(file['3']),
+                file['4'])
+            store.files.push(finalFile)
         }
-        return files
         
     }
     catch(err){
         console.log("error while fetching files ",err)
-        return null;
     }
     
 }
-export default retrieveFiles

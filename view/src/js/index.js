@@ -1,45 +1,29 @@
+import "@babel/polyfill"
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AddButton from './ui/addButton';
-import "@babel/polyfill"
-import retrieveFiles from './utils/retrieveFiles';  
+import { retrieveFiles } from './utils/retrieveFiles'
 import FileHodler from './ui/fileHodler';
 import {ipfsUrl} from '../../config';
+import {observer} from 'mobx-react';
+import fileStore from './store'
 const app = document.getElementById('main');
+@observer
 class Main extends React.Component{
 
-    constructor(props){
-        super(props)
-        this.state = {
-            imageUrl:[]
-        }
-    }
     componentDidMount(){
-        this.loadFiles()
+        retrieveFiles()
     }
-    async loadFiles(){
-        const files = await retrieveFiles.get()
-        if(files != null && files.length>0){
-            const imageUrl = []
-            files.map(file=>{
-                imageUrl.push(ipfsUrl+file.hash)
-            })
-            this.setState({
-                imageUrl: imageUrl
-            })
-        }
-        else
-            console.log('there might not be any files associated with the this address')   
-    }
-    
+
     render(){
         return(
-        <div id = 'index'>
-           <AddButton/>
-           <div>
-                {this.state.imageUrl.map(url=>(<FileHodler imageSrc={url}/>))}
-           </div>
-        </div>
+                <div id = 'index'>
+                    <AddButton/>
+                    <div>
+                        {fileStore.files.map(file=>(<FileHodler imageSrc={ipfsUrl+file.hash}/>))}
+                    </div>
+                </div>
+        
         )
     }
 }

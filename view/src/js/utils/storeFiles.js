@@ -4,9 +4,10 @@ import eth from '../core/web3';
 import ipfs from '../core/ipfs';
 import transactionOptions from '../core/transactionOptions';
 import { ethers } from 'ethers';
+import { fileStructure } from '.';
+import fileStore from '../store';
 
-const fileObject = {};
-fileObject.upload = file=>{
+export const uploadFile = (file, props)=>{
   if(file === null || file === undefined){
       return
   }
@@ -15,9 +16,9 @@ fileObject.upload = file=>{
     reader.onloadend = function(){
         const buf = buffer.Buffer(reader.result);
         ipfs.add(buf,async (err, res)=>{
-            
+        
+            const finalFile = fileStructure(file.name, res[0].hash, file.type, file.size)
             const hash = res[0].hash;
-            console.log(hash)
             const hashSize = hash.length;
             const middleOfHash = Math.floor(hashSize/2);
             const hash1 = hash.substr(0, middleOfHash);
@@ -38,6 +39,7 @@ fileObject.upload = file=>{
             })
             .on('receipt', (receipt) => {
                 console.log(receipt)
+                fileStore.files.push(finalFile)
                 
             })
             .on('confirmation', (confirmationNumber, receipt) => {
@@ -49,5 +51,3 @@ fileObject.upload = file=>{
     reader.readAsArrayBuffer(file);
   }
 }
-
-export default fileObject;

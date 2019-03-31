@@ -1,5 +1,5 @@
 import React from 'react';
-import fileObject from '../utils/storeFiles';
+import {uploadFile} from '../utils/storeFiles';
 import {addFile} from '../constants';
 
 class AddButton extends React.Component{
@@ -7,7 +7,7 @@ class AddButton extends React.Component{
         e.preventDefault()
         e.stopPropagation()
         const files = e.currentTarget.files;
-        fileObject.upload(files[0]);
+        uploadFile(files[0], this.props);
     }
     render(){
         return(
