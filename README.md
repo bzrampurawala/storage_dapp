@@ -4,15 +4,11 @@
 
 ### Features
 
-- Add File
-- Edit File
-- Delete File
-- Share File
-- create directories
+- Upload File
 
 ### Tech Stack
 
 - [Solidity](https://solidity.readthedocs.io/en/v0.4.25/)
-- [Ipfs]()
+- [Ipfs](https://docs.ipfs.io/)
 - [React](https://reactjs.org/)
-- [Mobx]()
+- [Mobx](https://mobx.js.org/)
