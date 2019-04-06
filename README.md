@@ -13,5 +13,6 @@
 ### Tech Stack
 
 - [Solidity](https://solidity.readthedocs.io/en/v0.4.25/)
-- [Swarm](https://swarm-guide.readthedocs.io/en/latest/)
+- [Ipfs]()
 - [React](https://reactjs.org/)
+- [Mobx]()
