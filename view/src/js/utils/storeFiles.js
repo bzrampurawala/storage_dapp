@@ -1,6 +1,6 @@
 import buffer from 'buffer';
 
-import eth from '../core/web3';
+import {web3, contract} from '../core/web3';
 import ipfs from '../core/ipfs';
 import transactionOptions from '../core/transactionOptions';
 import { ethers } from 'ethers';
@@ -33,7 +33,7 @@ export const uploadFile = (file, props)=>{
                 alert("download metamask");
                 return;
             }
-            eth.contract.methods.addFile(nameByte32, hash1Byte32, hash2Byte32, typeByte32, size).send(transactionOptions)
+            contract.methods.addFile(nameByte32, hash1Byte32, hash2Byte32, typeByte32, size).send(transactionOptions)
             .on('transactionHash', (hash) => {
                 console.log(hash)
             })

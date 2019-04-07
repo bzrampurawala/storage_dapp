@@ -30,7 +30,7 @@ module.exports = {
       network_id: 3,
       gas: 4712388,
       gasPrice: 100000000000,
-      // from: default_account,
+      from: default_account,
     }
   }
 };
