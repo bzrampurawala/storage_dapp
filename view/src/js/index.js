@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import AddButton from './ui/addButton';
 import { retrieveFiles } from './utils/retrieveFiles'
 import FileHodler from './ui/fileHodler';
-import {ipfsUrl} from '../../config';
+import {ipfsLocalUrl} from '../../config';
 import {observer} from 'mobx-react';
 import fileStore from './store'
 import {transactionOptions} from './core/transactionOptions'
@@ -29,7 +29,7 @@ class Main extends React.Component{
                 <div>
                     <AddButton/>
                     <div id = 'filesView'>
-                        {fileStore.files.map((file, index)=>(<FileHodler key = {index} imageSrc={ipfsUrl+file.hash}/>))}
+                        {fileStore.files.map((file, index)=>(<FileHodler key = {index} imageSrc={ipfsLocalUrl+file.hash}/>))}
                     </div>
                 </div>
         
