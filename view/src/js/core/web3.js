@@ -1,4 +1,4 @@
-import {networkRopsten, networkLocalHost, contractAddress} from '../../../config'
+import {networkLocalHost, contractAddress} from '../../../config'
 import Web3 from 'web3'
 const ourStore = require('../../../../build/contracts/Store.json');
 export const web3js = new Web3(web3.currentProvider)
