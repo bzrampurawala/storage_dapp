@@ -7,20 +7,29 @@ import FileHodler from './ui/fileHodler';
 import {ipfsUrl} from '../../config';
 import {observer} from 'mobx-react';
 import fileStore from './store'
+import {transactionOptions} from './core/transactionOptions'
 const app = document.getElementById('main');
+
+function connect () {
+    if (typeof ethereum !== 'undefined') {
+      ethereum.enable()
+      .catch(console.error)
+    }
+}
 @observer
 class Main extends React.Component{
 
     componentDidMount(){
+        if(!transactionOptions.from)connect()
         retrieveFiles()
     }
 
     render(){
         return(
-                <div id = 'index'>
+                <div>
                     <AddButton/>
-                    <div>
-                        {fileStore.files.map(file=>(<FileHodler imageSrc={ipfsUrl+file.hash}/>))}
+                    <div id = 'filesView'>
+                        {fileStore.files.map((file, index)=>(<FileHodler key = {index} imageSrc={ipfsUrl+file.hash}/>))}
                     </div>
                 </div>
         

@@ -1,20 +1,9 @@
 body{
     position: static;
     background-image: url('../assests/images/background.jpg');
-    opacity: 0.8;
-    margin: 0;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
     overflow-y: scroll;
+    display: block;
 }
-/* #index{
-    
-} */
 .addButton{
     margin: auto;
     cursor: pointer;
@@ -62,4 +51,14 @@ img {
   }
 img:hover{
 	background: #fff;
+}
+#filesView{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#main{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 }

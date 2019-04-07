@@ -1,8 +1,8 @@
 import buffer from 'buffer';
 
-import {web3, contract} from '../core/web3';
+import {contract} from '../core/web3';
 import ipfs from '../core/ipfs';
-import transactionOptions from '../core/transactionOptions';
+import {transactionOptions} from '../core/transactionOptions';
 import { ethers } from 'ethers';
 import { fileStructure } from '.';
 import fileStore from '../store';
@@ -29,10 +29,6 @@ export const uploadFile = (file, props)=>{
             const size = file.size;
             const hash1Byte32 =  converToByte32(hash1);
             const hash2Byte32 = converToByte32(hash2);
-            if(transactionOptions.from==null){
-                alert("download metamask");
-                return;
-            }
             contract.methods.addFile(nameByte32, hash1Byte32, hash2Byte32, typeByte32, size).send(transactionOptions)
             .on('transactionHash', (hash) => {
                 console.log(hash)
