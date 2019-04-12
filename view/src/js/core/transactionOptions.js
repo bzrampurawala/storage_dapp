@@ -1,5 +1,6 @@
+import store from '../store'
 export const transactionOptions = {
-    from: web3.eth.accounts[0],
+    from: store.account,
     gasPrice: 2000000000,
     gas: 6721975
 }
