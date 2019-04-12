@@ -2,9 +2,14 @@
 let store = artifacts.require('./Store.sol');
 contract("Store", function(accounts){
     it("push file", function() {
-        return store.deployed().then(instance=>instance.addFile(web3.utils.toHex('burhanuddin'), web3.utils.toHex('burhanuddin'), web3.utils.toHex('burhanuddin'),web3.utils.toHex('burhanuddin rampurawala is great'),21345)).then(data=>{
-            console.log(data)
-        });
+        return store.deployed().then(instance=>
+            instance.addFile(
+                web3.utils.toHex('burhanuddin'),
+                web3.utils.toHex('burhanuddin'),
+                web3.utils.toHex('burhanuddin'),
+                web3.utils.toHex('burhanuddin rampurawala is great')
+                ,21345
+                ).then(data=>console.log(data)));
     });
     it("get number of files", function() {
         return store.deployed().then(instance=>instance.numberOfFiles()).then(count=>{

@@ -2,3 +2,6 @@
 /package-lock.json
 /.env
 /view/src/dist/bundle.js
+.DS_Store
+view/.DS_Store
+view/src/.DS_Store
