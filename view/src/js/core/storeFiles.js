@@ -20,16 +20,11 @@ export const uploadFile = (file, props)=>{
             const finalFile = fileStructure(file.name, file.hash, file.type, file.size)
             const newDs = convertToEthereumSupportedDS(file)
             contract.methods.addFile(newDs.name, newDs.hash1, newDs.hash2, newDs.type, newDs.size).send(transactionOptions)
-            .on('transactionHash', (hash) => {
-                console.log(hash)
-            })
-            .on('receipt', (receipt) => {
-                console.log(receipt)
-                fileStore.files.push(finalFile)
-                
-            })
+            .on('transactionHash', console.log)
+            .on('receipt', console.log)
             .on('confirmation', (confirmationNumber, receipt) => {
-                console.log(confirmationNumber,receipt)                
+                console.log(confirmationNumber,receipt)
+                if(confirmationNumber===1) fileStore.files.push(finalFile)         
             })
             .on('error', console.error);
         })

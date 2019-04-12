@@ -33,9 +33,8 @@ window.onload = init
 
 @observer
 class Main extends React.Component{
-
-    componentWillUnmount(){
-        clearInterval(interval)
+    componentDidMount(){
+        console.log(web3.eth.accounts[0])
     }
     render(){
         return(

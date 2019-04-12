@@ -13,7 +13,6 @@ export default class ShareUI extends React.Component{
             inputAddress:""
         }
     }
-
     handleInput(event){
         this.setState({
             inputAddress: event.target.value
