@@ -16,14 +16,22 @@ function connect () {
       .catch(console.error)
     }
 }
+const accountInterval = ()=>setInterval(function() {
+    if (web3.eth.accounts[0] !== transactionOptions.from) location.reload() 
+}, 500);
+
 @observer
 class Main extends React.Component{
-
+    interval
     componentDidMount(){
         if(!transactionOptions.from)connect()
         retrieveFiles()
+        this.interval = accountInterval()
     }
-
+    
+    componentWillUnmount(){
+        clearInterval(this.interval)
+    }
     render(){
         return(
                 <div>
