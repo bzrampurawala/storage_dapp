@@ -43,7 +43,7 @@ class Main extends React.Component{
                 <div>
                     <AddButton/>
                     <div id = 'filesView'>
-                        {fileStore.files.map((file, index)=>(<FileHodler key = {index} imageSrc={ipfsLocalUrl+file.hash}/>))}
+                        {fileStore.files.map((file, index)=>(<FileHodler key = {index} index = {index} imageSrc={ipfsLocalUrl+file.hash}/>))}
                     </div>
                 </div>
         
