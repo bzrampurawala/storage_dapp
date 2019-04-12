@@ -2,18 +2,17 @@ import "@babel/polyfill"
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AddButton from './ui/addButton';
-import { retrieveFiles } from './utils/retrieveFiles'
+import { retrieveFiles } from './core/retrieveFiles'
 import FileHodler from './ui/fileHodler';
 import {ipfsLocalUrl} from '../../config';
 import {observer} from 'mobx-react';
 import fileStore from './store'
-import {transactionOptions} from './core/transactionOptions'
 const app = document.getElementById('main');
 
 let interval;
 
 const accountInterval = ()=>setInterval(function() {
-    if (fileStore.account && web3.eth.accounts[0] !== transactionOptions.from) location.reload() 
+    if (fileStore.account !== web3.eth.accounts[0]) location.reload() 
 }, 500);
 
 function connect () {

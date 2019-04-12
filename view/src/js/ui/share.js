@@ -3,9 +3,7 @@ import { to, from, share, toAddressPlaceHolder } from '../constants'
 import { observer } from 'mobx-react';
 import store from '../store'
 import { web3js } from '../core/web3';
-import { shareFile } from '../utils/shareFile'
-// import web3 from 'web3'
-
+import { shareFile } from '../core/shareFile'
 @observer
 export default class ShareUI extends React.Component{
 

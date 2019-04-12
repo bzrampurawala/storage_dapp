@@ -1,9 +1,9 @@
 import buffer from 'buffer';
 
-import {contract} from '../core/web3';
-import ipfs from '../core/ipfs';
-import {transactionOptions} from '../core/transactionOptions';
-import { fileStructure, convertToEthereumSupportedDS } from '.';
+import {contract} from './web3';
+import ipfs from './ipfs';
+import {transactionOptions} from '../utils/transactionOptions';
+import { fileStructure, convertToEthereumSupportedDS } from '../utils';
 import fileStore from '../store';
 
 export const uploadFile = (file, props)=>{

@@ -1,5 +1,5 @@
 import React from 'react';
-import {uploadFile} from '../utils/storeFiles';
+import {uploadFile} from '../core/storeFiles';
 import {addFile} from '../constants';
 
 class AddButton extends React.Component{

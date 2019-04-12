@@ -1,7 +1,6 @@
-import { contract } from '../core/web3';
-import { convertToEthereumSupportedDS } from '.'
-import { ethers } from 'ethers'
-import {transactionOptions} from '../core/transactionOptions';
+import { contract } from './web3';
+import { convertToEthereumSupportedDS } from '../utils'
+import {transactionOptions} from '../utils/transactionOptions';
 import fileStore from '../store';
 export const shareFile = async (index, to)=>{
     const file = fileStore.files.slice()[index]

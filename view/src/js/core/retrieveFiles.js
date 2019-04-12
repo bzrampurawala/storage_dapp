@@ -1,5 +1,5 @@
-import {contract} from '../core/web3';
-import {transactionOptions} from '../core/transactionOptions';
+import {contract} from './web3';
+import {transactionOptions} from '../utils/transactionOptions';
 import { fileStructure } from '../utils'
 import fileStore from '../store'
 export const retrieveFiles = async ()=>{
@@ -17,7 +17,6 @@ export const retrieveFiles = async ()=>{
                 file['4'])
             fileStore.files.push(finalFile)
         }
-        
     }
     catch(err){
         console.log("error while fetching files ",err)
