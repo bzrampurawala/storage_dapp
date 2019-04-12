@@ -3,6 +3,7 @@ import { to, from, share, toAddressPlaceHolder } from '../constants'
 import { observer } from 'mobx-react';
 import store from '../store'
 import { web3js } from '../core/web3';
+import { shareFile } from '../utils/shareFile'
 // import web3 from 'web3'
 
 @observer
@@ -21,14 +22,12 @@ export default class ShareUI extends React.Component{
         })
     }
 
-    shareFile(event){
+    clickToShareFile(event){
         event.preventDefault()
         if(this.state.inputAddress.length === 0) alert("To address cannot be empty")
         else if (!web3js.utils.isAddress(this.state.inputAddress)) alert("Invalid address")
         else{
-            // to implement
-            console.log(this.props.index)
-            console.log(this.state.inputAddress)
+           shareFile(this.props.index ,this.state.inputAddress)
         }
     }
     render(){
@@ -42,7 +41,7 @@ export default class ShareUI extends React.Component{
                     <label id = "toText"> {to}: </label>
                     <input type = "toAddresstext" name = "toAddress" value = {this.state.inputAddress} onChange = {this.handleInput.bind(this)} placeholder={ toAddressPlaceHolder } ></input>
                 </div>
-                <button id="shareButton" onClick = {this.shareFile.bind(this)}>{share}</button>
+                <button id="shareButton" onClick = {this.clickToShareFile.bind(this)}>{share}</button>
             </div>
         )
     }

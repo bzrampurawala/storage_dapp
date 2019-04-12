@@ -3,8 +3,7 @@ import buffer from 'buffer';
 import {contract} from '../core/web3';
 import ipfs from '../core/ipfs';
 import {transactionOptions} from '../core/transactionOptions';
-import { ethers } from 'ethers';
-import { fileStructure } from '.';
+import { fileStructure, convertToEthereumSupportedDS } from '.';
 import fileStore from '../store';
 
 export const uploadFile = (file, props)=>{
@@ -17,20 +16,10 @@ export const uploadFile = (file, props)=>{
     reader.onloadend = function(){
         const buf = buffer.Buffer(reader.result);
         ipfs.add(buf,async (err, res)=>{
-        
-            const finalFile = fileStructure(file.name, res[0].hash, file.type, file.size)
-            const hash = res[0].hash;
-            const hashSize = hash.length;
-            const middleOfHash = Math.floor(hashSize/2);
-            const hash1 = hash.substr(0, middleOfHash);
-            const hash2 = hash.substr(middleOfHash);
-            const converToByte32 = ethers.utils.formatBytes32String;
-            const nameByte32 = converToByte32(file.name);
-            const typeByte32 =  converToByte32(file.type);
-            const size = file.size;
-            const hash1Byte32 =  converToByte32(hash1);
-            const hash2Byte32 = converToByte32(hash2);
-            contract.methods.addFile(nameByte32, hash1Byte32, hash2Byte32, typeByte32, size).send(transactionOptions)
+            file.hash = res[0].hash
+            const finalFile = fileStructure(file.name, file.hash, file.type, file.size)
+            const newDs = convertToEthereumSupportedDS(file)
+            contract.methods.addFile(newDs.name, newDs.hash1, newDs.hash2, newDs.type, newDs.size).send(transactionOptions)
             .on('transactionHash', (hash) => {
                 console.log(hash)
             })
