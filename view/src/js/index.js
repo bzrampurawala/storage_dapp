@@ -10,27 +10,33 @@ import fileStore from './store'
 import {transactionOptions} from './core/transactionOptions'
 const app = document.getElementById('main');
 
+let interval;
+
+const accountInterval = ()=>setInterval(function() {
+    if (fileStore.account && web3.eth.accounts[0] !== transactionOptions.from) location.reload() 
+}, 500);
+
 function connect () {
     if (typeof ethereum !== 'undefined') {
       ethereum.enable()
       .catch(console.error)
     }
 }
-const accountInterval = ()=>setInterval(function() {
-    if (web3.eth.accounts[0] !== transactionOptions.from) location.reload() 
-}, 500);
+
+const init = ()=>{
+    fileStore.account = web3.eth.accounts[0]
+    if(!web3.eth.accounts[0])connect()
+    retrieveFiles()
+    interval = accountInterval()
+}
+
+window.onload = init
 
 @observer
 class Main extends React.Component{
-    interval
-    componentDidMount(){
-        if(!transactionOptions.from)connect()
-        retrieveFiles()
-        this.interval = accountInterval()
-    }
-    
+
     componentWillUnmount(){
-        clearInterval(this.interval)
+        clearInterval(interval)
     }
     render(){
         return(
@@ -45,3 +51,4 @@ class Main extends React.Component{
     }
 }
 ReactDOM.render(<Main/>,app);
+

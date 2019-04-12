@@ -1,9 +1,10 @@
 import {contract} from '../core/web3';
 import {transactionOptions} from '../core/transactionOptions';
 import { fileStructure } from '../utils'
-import store from '../store'
+import fileStore from '../store'
 export const retrieveFiles = async ()=>{
     try{
+        transactionOptions.from = fileStore.account
         let numberOfFiles = await contract.methods.numberOfFiles().call(transactionOptions);
         while(numberOfFiles>0){
             numberOfFiles = numberOfFiles-1;
@@ -14,7 +15,7 @@ export const retrieveFiles = async ()=>{
                 hexToString(file['1']) + hexToString(file['2']),
                 hexToString(file['3']),
                 file['4'])
-            store.files.push(finalFile)
+            fileStore.files.push(finalFile)
         }
         
     }

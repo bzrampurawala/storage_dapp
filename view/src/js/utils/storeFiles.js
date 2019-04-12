@@ -12,6 +12,7 @@ export const uploadFile = (file, props)=>{
       return
   }
   else{
+    transactionOptions.from = fileStore.account
     const reader = new FileReader();
     reader.onloadend = function(){
         const buf = buffer.Buffer(reader.result);
