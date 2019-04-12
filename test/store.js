@@ -14,4 +14,18 @@ contract("Store", function(accounts){
       it("get file", function() {
         return store.deployed().then(instance=>instance.getFile(0).then(data=>console.log(data)));
       });
+
+      it("share file", ()=>{
+        return store.deployed().then(instance=>
+            instance.shareFile(
+                "0xA9fd870d0Df96D591cBf562e5D45C58278Bf2A28",
+                web3.utils.toHex('burhanuddin'),
+                web3.utils.toHex('burhanuddin'),
+                web3.utils.toHex('burhanuddin'),
+                web3.utils.toHex('burhanuddin rampurawala is great'),
+                21345
+                )
+                .then(data=> console.log(data))
+            )
+      })
 })
