@@ -30,14 +30,7 @@ export default class ShareUI extends React.Component{
     render(){
         return(
             <div id = "shareUI">
-                <div id = "textView">
-                    <label id = "fromText"> {from}: </label>
-                    <label id = "fromAddressText"> {store.account} </label>
-                </div>
-                <div id = "textView">
-                    <label id = "toText"> {to}: </label>
-                    <input type = "toAddresstext" name = "toAddress" value = {this.state.inputAddress} onChange = {this.handleInput.bind(this)} placeholder={ toAddressPlaceHolder } ></input>
-                </div>
+                <input type = "toAddresstext" name = "toAddress" value = {this.state.inputAddress} onChange = {this.handleInput.bind(this)} placeholder={ toAddressPlaceHolder } ></input>
                 <button id="shareButton" onClick = {this.clickToShareFile.bind(this)}>{share}</button>
             </div>
         )

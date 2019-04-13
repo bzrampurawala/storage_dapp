@@ -89,22 +89,6 @@ img:hover{
     display: flex;
     flex-direction: row;
 }
-#toText{
-    margin-right: 1%;
-    font-size: 100%;
-}
-#fromText{
-    margin-right: 1%;
-    font-size: 100%;
-}
-#fromAddressText{
-    overflow: hidden;
-    font-size: 100%;
-}
-#toAddressText{
-    overflow: hidden;
-    font-size: 100%;
-}
 label{
     color: #fff
 }
@@ -128,10 +112,10 @@ label{
     padding: 4%
 }
 input{
-    width: 100%;
-    font-size: 80%;
+    justify-self: center;
+    width: 98%;
+    font-size: 100%;
     padding: 1%;
     border-radius: 5px;
-    margin-left: 1%;
     border: 0;
 }
