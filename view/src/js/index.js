@@ -50,7 +50,7 @@ class Main extends React.Component{
                             else if(type === "mp3" || type === "mp4" ) src = path+ `${type}.png`
                             else if(type === "docx") src = path+ `${type}.png`
                             else src = path + `${any}.png`
-                            return(<FileHodler key = {index} index = {index} imageSrc={src} name = {file.name}/>)
+                            return(<FileHodler key = {index} index = {index} imageSrc={src} name = {file.name} href = {ipfsLocalUrl+file.hash}/>)
                         })}
                     </div>
                 </div>
