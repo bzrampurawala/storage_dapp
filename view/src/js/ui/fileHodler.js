@@ -7,6 +7,7 @@ class FileHodler extends React.Component{
             <div id = "singleFileView">
                 <img src = {this.props.imageSrc}/>
                 <ShareUI index={this.props.index}/>
+                <label id="nameText"> {this.props.name} </label>
             </div>
         )
     }
