@@ -16,6 +16,7 @@ export const retrieveFiles = async ()=>{
                 hexToString(file['3']),
                 file['4'])
             fileStore.files.push(finalFile)
+            console.log(finalFile)
         }
     }
     catch(err){

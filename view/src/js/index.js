@@ -41,7 +41,17 @@ class Main extends React.Component{
                 <div>
                     <AddButton/>
                     <div id = 'filesView'>
-                        {fileStore.files.map((file, index)=>(<FileHodler key = {index} index = {index} imageSrc={ipfsLocalUrl+file.hash}/>))}
+                        {fileStore.files.map((file, index)=>{
+                            let src;
+                            const type = file.type.split('/')[1]
+                            const path = "/src/assests/images/"
+                            if(type === "jpeg" || type === "png") src = ipfsLocalUrl+file.hash
+                            else if(type === "pdf") src = path+ `${type}.png`
+                            else if(type === "mp3" || type === "mp4" ) src = path+ `${type}.png`
+                            else if(type === "docx") src = path+ `${type}.png`
+                            else src = path + `${any}.png`
+                            return(<FileHodler key = {index} index = {index} imageSrc={src} name = {file.name}/>)
+                        })}
                     </div>
                 </div>
         

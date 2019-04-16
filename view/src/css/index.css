@@ -96,18 +96,19 @@ label{
     justify-self: center;
     width: 100%;
     font-size: 100%;
-    border: 3px solid #fff;
+    border: 3px solid #9D9D9D;
     padding: 3%;
     margin-top: 3%;
     background: none;
     -webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
-	transition: all 0.3s;
+    transition: all 0.3s;
+    color: #000
 }
 #shareButton:hover,
 #shareButton:active {
-	color: #F0A9A4;
-    background: #000;
+	color: #0076CC;
+    background: #DFDFDF;
     border: 0px;
     padding: 4%
 }
@@ -118,4 +119,5 @@ input{
     padding: 1%;
     border-radius: 5px;
     border: 0;
+    background: #DFDFDF
 }

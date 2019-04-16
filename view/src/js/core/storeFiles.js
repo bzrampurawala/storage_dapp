@@ -17,6 +17,7 @@ export const uploadFile = (file, props)=>{
         const buf = buffer.Buffer(reader.result);
         ipfs.add(buf,async (err, res)=>{
             file.hash = res[0].hash
+            console.log(file.hash)
             const finalFile = fileStructure(file.name, file.hash, file.type, file.size)
             const newDs = convertToEthereumSupportedDS(file)
             contract.methods.addFile(newDs.name, newDs.hash1, newDs.hash2, newDs.type, newDs.size).send(transactionOptions)
