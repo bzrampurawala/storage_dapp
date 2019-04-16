@@ -19,7 +19,7 @@ export const convertToEthereumSupportedDS = (fileData)=>{
     const hash2 = hash.substr(middleOfHash);
     const converToByte32 = ethers.utils.formatBytes32String;
     newDS.name = converToByte32(fileData.name);
-    newDS.type =  converToByte32(fileData.type);
+    newDS.type =  converToByte32(fileData.fileType);
     newDS.size = fileData.size;
     newDS.hash1 =  converToByte32(hash1);
     newDS.hash2 = converToByte32(hash2);
