@@ -5,6 +5,8 @@
 ### Features
 
 - Upload File
+- View File
+- Share File
 
 ### Tech Stack
 
