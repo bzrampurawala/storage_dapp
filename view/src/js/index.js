@@ -43,7 +43,7 @@ class Main extends React.Component{
                     <div id = 'filesView'>
                         {fileStore.files.map((file, index)=>{
                             let src;
-                            const type = file.type.split('/')[1]
+                            const type = file.fileType.split('/')[1]
                             const path = "/src/assests/images/"
                             if(type === "jpeg" || type === "png" || type == "jpg") src = ipfsLocalUrl+file.hash
                             else if(type === "pdf") src = `${path}${type}.png`

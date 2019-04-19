@@ -4,13 +4,13 @@ export const fileStructure = (name, hash, type, size)=>{
     return{
         name: name,
         hash: hash,
-        type: type,
+        fileType: type,
         size: size
 
     }
 }
 
-export const convertToEthereumSupportedDS = (fileData)=>{
+export const convertToEthereumSupportedDS = fileData=>{
     const newDS = {}
     const hash = fileData.hash;
     const hashSize = hash.length;
